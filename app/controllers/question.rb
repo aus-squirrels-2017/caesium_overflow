@@ -1,8 +1,9 @@
-get '/questions/new' do
-  return erb :'404' unless current_user
-  @id = current_user.id
-erb :'questions/new'
-end
+# pulling
+# get '/questions/new' do
+#   return erb :'404' unless current_user
+#   @id = current_user.id
+# erb :'/'
+# end
 
 post '/questions' do
   @question = Question.new(params[:question])
