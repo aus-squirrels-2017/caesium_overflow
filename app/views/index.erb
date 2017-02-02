@@ -4,8 +4,8 @@
   <p>
     <a href="#questions">new</a>
     <a href="#">comments</a>
-    <a href="#">popular</a>
-    <a href="#">login</a>
+    <a href="/register">register</a>
+    <a href="/log_in">login</a>
   </p>
 </header>
 
@@ -19,7 +19,11 @@
       <h2><a href='/questions/<%= question.id %>'><%= question.title %></a></h2>
       <p>
 
-        <span class='timestamp'><%= question.time_since_creation%></span>
+
+<!--         <span class='timestamp'><%= question.time_since_creation%></span>
+        <span class='points'><%= question.points %></span>
+        <span class='username'><%= question.user_id.email %></span>
+        <span class='timestamp'><%= question.id %></span> -->
         <span class='comment-count'><%= question.comments.length %></span>
           <form method="post" action="/questions/<%= question.id %>" class="inline">
       <input type="hidden" name="_method" value="delete">
