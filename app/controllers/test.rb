@@ -4,7 +4,6 @@ end
 
 get '/comments/new' do
   erb :'/questions/_create_comment'
-
 end
 
 get '/errors/404' do
