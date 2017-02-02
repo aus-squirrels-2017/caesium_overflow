@@ -8,7 +8,7 @@ post '/register' do
   if new_user.valid?
     new_user.save
     session[:user_id] = new_user.id
-    redirect to("/user/#{new_user.id}")
+    redirect to("/users/#{new_user.id}")
   else
     403
   end
@@ -36,7 +36,7 @@ get '/authentication_problem' do
   erb :"users/authentication_problem"
 end
 
-get '/user/:id' do
+get '/users/:id' do
   @user = User.find(:id)
   erb :"users/user"
 end
