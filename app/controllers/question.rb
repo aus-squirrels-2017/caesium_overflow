@@ -2,7 +2,7 @@
 # get '/questions/new' do
 #   return erb :'404' unless current_user
 #   @id = current_user.id
-# erb :'/'
+#   erb :'/'
 # end
 
 post '/questions' do

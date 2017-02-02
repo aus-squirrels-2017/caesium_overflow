@@ -37,6 +37,6 @@ get '/authentication_problem' do
 end
 
 get '/users/:id' do
-  @user = User.find(:id)
+  @user = User.find(params[:id])
   erb :"users/user"
 end
