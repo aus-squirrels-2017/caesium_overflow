@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :questions
+  belongs_to :votable, polymorphic: true
+  has_many :votes, as: :votable
   include BCrypt
 
   def self.authenticate_user(email, password)

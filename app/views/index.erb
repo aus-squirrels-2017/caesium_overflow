@@ -20,10 +20,10 @@
       <p>
 
 
-<!--         <span class='timestamp'><%= question.time_since_creation%></span>
-        <span class='points'><%= question.points %></span>
-        <span class='username'><%= question.user_id.email %></span>
-        <span class='timestamp'><%= question.id %></span> -->
+<!--         <span class='timestamp'><%# question.time_since_creation%></span>
+        <span class='points'><%# question.points %></span>
+        <span class='username'><%# question.user_id.email %></span>
+        <span class='timestamp'><%# question.id %></span> -->
         <span class='comment-count'><%= question.comments.length %></span>
           <form method="post" action="/questions/<%= question.id %>" class="inline">
       <input type="hidden" name="_method" value="delete">
