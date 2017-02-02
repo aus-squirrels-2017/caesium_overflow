@@ -1,3 +1,11 @@
 
 
+<%= @user.name %>
 
+<%= @user.email %>
+
+<% @user.questions.each do |question| %>
+
+  <a href='/question/<%=question.id%>'><%=question.title%></a>
+
+<% end %>
