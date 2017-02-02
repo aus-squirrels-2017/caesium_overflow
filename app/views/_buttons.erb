@@ -1,0 +1,7 @@
+<% if current_user %>
+<a href="/logout">logout</a>
+<%= current_user.username %>
+<%else%>
+<a href="/log_in">login</a>
+<a href="/register">register</a>
+<% end%>

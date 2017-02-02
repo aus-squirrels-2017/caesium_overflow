@@ -22,19 +22,19 @@ get '/questions/:id' do
   erb :'question'
 end
 
-# put '/questions/:id' do
-#   @question = find_and_ensure_question(params[:id])
-#   @question.assign_attributes(params[:question])
-#   # @entry = find_and_ensure_entry(params[:id])
-#   # @name = User.find_by(id: @entry.user_id).username
+put '/questions/:id' do
+  @question = find_and_ensure_question(params[:id])
+  @question.assign_attributes(params[:question])
+  # @entry = find_and_ensure_entry(params[:id])
+  # @name = User.find_by(id: @entry.user_id).username
 
-#   if @question.save
-#     redirect "question/#{@question.id}"
-#   else
-#     @question = @question.errors.full_messages
-#     erb :'questions/edit'
-#   end
-# end
+  if @question.save
+    redirect "questions/#{@question.id}"
+  else
+    @question = @question.errors.full_messages
+    erb :'questions/edit'
+  end
+end
 
 delete '/questions/:id' do
   @question = find_and_ensure_question(params[:id])

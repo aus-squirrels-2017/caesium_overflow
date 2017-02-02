@@ -1,4 +1,6 @@
 
+
+
 <h1><%= @question.title %></h1>
 
 <span class="entry-date block font-3-4 c-lt-gray"><%= "Written on #{long_form_date(@question.created_at)}, by #{@name}." %></span>
@@ -17,3 +19,5 @@
     </form>
   </li>
 </ul>
+
+<%= erb :'questions/_create_comment' %>
