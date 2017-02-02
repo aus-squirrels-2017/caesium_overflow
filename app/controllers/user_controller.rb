@@ -1,5 +1,5 @@
 get '/register' do
-  erb :register
+  erb :"users/register"
 end
 
 post '/register' do
@@ -8,20 +8,20 @@ post '/register' do
   if new_user.valid?
     new_user.save
     session[:user_id] = new_user.id
-    redirect to('/')
+    redirect to("/user/#{new_user.id}")
   else
-    redirect to('registration_error')
+    403
   end
 end
 
 get '/log_in' do
-  erb :log_in
+  erb :"users/log_in"
 end
 
 post '/log_in' do
   if User.authenticate_user(params[:password], params[:email])
     session[:user_id] = User.find_by(email: params[:email]).id
-    redirect to('/entries')
+    redirect to('/')
   else
     redirect to('/authentication_problem')
   end
@@ -29,13 +29,14 @@ end
 
 get '/log_out' do
   session[:user_id] = nil
-  redirect to('/entries')
+  redirect to('/')
 end
 
 get '/authentication_problem' do
-  erb :authentication_problem
+  erb :"users/authentication_problem"
 end
 
-get '/profile/:id' do
-  erb :user
+get '/user/:id' do
+  @user = User.find(:id)
+  erb :"users/user"
 end
