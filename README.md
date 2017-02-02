@@ -5,8 +5,8 @@ Alex Raubach
 Josh Lucas
 
 User Stories:
-User can log in
-User can register
+User can log in xxxxxxx
+User can register xxxxxxx
 User can ask question
 User can comment on question
 User can select a comment as answer
