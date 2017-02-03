@@ -9,6 +9,24 @@ def create_comment
   comment
 end 
 
+def create_vote
+  user_id = User.pluck(:id).sample
+  votable_classes = ['question', 'comment'].sample
+  votable_id = nil
+
+  if votable_classes == 'question'
+    votable_id = Question.pluck(:id).sample
+  else
+    votable_id = Comment.pluck(:id).sample
+  end
+  vote = Vote.create!(:user_id      => user_id, 
+                  :votable_type => votable_classes,
+                  :votable_id   => votable_id)
+
+end
+
+
+
 User.delete_all
 Comment.delete_all
 Question.delete_all
@@ -28,8 +46,16 @@ end
     question.comments << create_comment
   end
 
+  5.times do
+    create_vote
+
+  end
+
   question.comments.sample.comments << create_comment
+
+
 end
 
 
- 
+
+
