@@ -1,5 +1,6 @@
 Team Name: Caesium
-James Wilson Erica Forget Alex Raubach Josh Lucas
+
+James Wilson, Erica Forget, Alex Raubach, Josh Lucas
 
 
 User Stories:
