@@ -130,7 +130,7 @@ form#posts input[type='submit'] {
   border: none;
   padding-top: 5px;
   color: #8C8C8C;
-  vertical-align: sub;
+  vertical-align: top;
   padding: 0px 0px 1px 0px;
 }
 
