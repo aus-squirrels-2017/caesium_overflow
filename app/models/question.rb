@@ -9,8 +9,14 @@ class Question < ActiveRecord::Base
   end
 
   def self.most_recent(number=10)
-    Question.order(created_at: :desc).limit(number)
+    questions = Question.order(created_at: :desc).limit(number)
+    questions.sort_by {|question| [-(question.points),question.created_at]}
   end
+
+  # def self.most_points
+  #   questions = self.most_recent
+  #   questions.sort_by { |question| -(question.points) }
+  # end
 
   def time_since_creation
     ((Time.now - created_at) / 3600).round
