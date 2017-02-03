@@ -1,7 +1,9 @@
 <% if current_user %>
-<a href="/logout">logout</a>
-<a href="/users/<%=current_user.id%>"><%= current_user.name %></a>
+  <a href="/logout">logout</a>
+  <a href="/users/<%=current_user.id%>"><%= current_user.name %></a>
+  <a href="/questions/all">All Questions</a>
 <%else%>
-<a href="/login">login</a>
-<a href="/register">register</a>
+  <a href="/log_in">login</a>
+  <a href="/register">register</a>
+  <a href="/questions/all">All Questions</a>
 <% end%>
