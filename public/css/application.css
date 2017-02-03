@@ -1,13 +1,13 @@
 body {
   counter-reset:section;
-  background-color: #F6F6EF;
+  background-color: #F2F1EF;
   font-family: Verdana;
   max-width: 700px;
   margin: 0 auto;
 }
 
 header {
-  background-color: #F4712D;
+  background-color: #6BB9F0;
   padding: 5px 5px;
 }
 
