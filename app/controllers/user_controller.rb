@@ -14,11 +14,11 @@ post '/register' do
   end
 end
 
-get '/log_in' do
-  erb :"users/log_in"
+get '/login' do
+  erb :"users/login"
 end
 
-post '/log_in' do
+post '/login' do
   if User.authenticate_user(params[:password], params[:email])
     session[:user_id] = User.find_by(email: params[:email]).id
     redirect to('/')
@@ -27,9 +27,9 @@ post '/log_in' do
   end
 end
 
-get '/log_out' do
+get '/logout' do
   session[:user_id] = nil
-  redirect to('/')
+  redirect '/'
 end
 
 get '/authentication_problem' do
