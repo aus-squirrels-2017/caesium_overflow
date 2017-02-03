@@ -42,5 +42,10 @@ end
 
 get '/questions/:id/edit' do
   @question = find_and_ensure_question(params[:id])
-  erb :'questions/edit'
+
+  if request.xhr?
+    erb :'questions/edit', layout: false, locals: {question: @question}
+  else
+    erb :'questions/edit', locals: {question: @question}
+end
 end
