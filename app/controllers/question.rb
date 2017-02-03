@@ -1,4 +1,3 @@
-# pulling
 # get '/questions/new' do
 #   return erb :'404' unless current_user
 #   @id = current_user.id
@@ -18,14 +17,13 @@ end
 
 get '/questions/:id' do
   @question = find_and_ensure_question(params[:id])
-  # @name = User.find_by(id: @question.user_id).name
+  @name = User.find_by(id: @question.user_id).name
   erb :'question'
 end
 
 put '/questions/:id' do
   @question = find_and_ensure_question(params[:id])
   @question.assign_attributes(params[:question])
-  # @entry = find_and_ensure_entry(params[:id])
   # @name = User.find_by(id: @entry.user_id).username
 
   if @question.save

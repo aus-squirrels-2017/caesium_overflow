@@ -6,5 +6,7 @@ class Comment < ActiveRecord::Base
   belongs_to :votable, polymorphic: true
   has_many :votes, as: :votable
 
-  # Remember to create a migration!
+  def points
+    votes.count
+  end
 end
