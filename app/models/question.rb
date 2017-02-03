@@ -13,11 +13,6 @@ class Question < ActiveRecord::Base
     questions.sort_by {|question| [-(question.points),question.created_at]}
   end
 
-  # def self.most_points
-  #   questions = self.most_recent
-  #   questions.sort_by { |question| -(question.points) }
-  # end
-
   def time_since_creation
     ((Time.now - created_at) / 3600).round
   end

@@ -7,6 +7,15 @@ class Comment < ActiveRecord::Base
   has_many :votes, as: :votable
 
   def points
-    votes.count
+    votes.count - votes.where(downvote: true).count*2
+  end
+
+  def self.most_recent(number=10)
+    comments = Comment.order(created_at: :desc).limit(number)
+    comments.sort_by {|comment| [-(comment.points),comment.created_at]}
+  end
+
+  def time_since_creation
+    ((Time.now - created_at) / 3600).round
   end
 end
