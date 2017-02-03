@@ -1,11 +1,11 @@
 <div>
   <p>Can you help? Caesium Overflow depends on everyone sharing their knowledge. If you're able to answer this question, please do!</p>
   <h3>Your Answer</h3>
-  <form method="POST" action="/comments/new" >
-    <textarea name="new-post">
-      
+  <form id="comment-form" method="POST" action="/comments/<%= @question.id%>" >
+    <textarea name="new_post">
+
     </textarea>
     <br>
-    <input type="submit" name="Create">
+    <button type="submit" > Create</button>
   </form>
 </div>

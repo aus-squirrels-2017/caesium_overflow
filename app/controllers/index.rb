@@ -1,15 +1,27 @@
 get '/' do
+  session[:number] = 10
   redirect '/questions'
 end
 
 get '/questions' do
-  @questions = Question.all
+  session[:number] = 10
+  @questions = Question.most_recent
+  erb :index
+end
+
+get '/questions/all' do
+  session[:number] += 10
+  @questions = Question.most_recent(session[:number])
   erb :index
 end
 
 post '/questions/:id/vote' do
   question = Question.find(params[:id])
-  question.votes << Vote.new
+  vote = Vote.new
+  if params[:submit_param] == 'downvote'
+    vote.downvote = true
+  end
+  question.votes << vote
   question.save
   if request.xhr?
     question.points
