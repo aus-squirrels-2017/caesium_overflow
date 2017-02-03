@@ -27,9 +27,9 @@ post '/log_in' do
   end
 end
 
-get '/log_out' do
+get '/logout' do
   session[:user_id] = nil
-  redirect to('/')
+  redirect '/'
 end
 
 get '/authentication_problem' do
