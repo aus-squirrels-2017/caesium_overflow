@@ -23,7 +23,7 @@ post '/login' do
     session[:user_id] = User.find_by(email: params[:email]).id
     redirect to('/')
   else
-    redirect to('/authentication_problem')
+    redirect to('/users/login')
   end
 end
 
