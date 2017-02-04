@@ -46,10 +46,7 @@ end
     question.comments << create_comment
   end
 
-  5.times do
-    create_vote
-
-  end
+  create_vote
 
   question.comments.sample.comments << create_comment
 
