@@ -15,6 +15,9 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+  <script src="/js/application.js"></script>
+  <script src="/js/user.js"></script>
+
 
   <title></title>
 </head>
@@ -22,15 +25,12 @@
   <header>
   <a href="/"><h1>Caesium Overflow</h1></a>
   <p>
-    <!-- <a href="/questions/new">new</a> -->
-    <!-- <a href="">comments</a> -->
     <%= erb :_buttons %>
-   <!--  <a href="/register">register</a>
-    <a href="/login">login</a> -->
   </p>
 </header>
-
+  <div id='main-div'>
   <%= yield %>
+  </div>
   <script src="/js/application.js"></script>
   <script src="/js/question_and_comments.js"></script>
 </body>

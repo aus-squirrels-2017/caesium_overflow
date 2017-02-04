@@ -1,25 +1,25 @@
 
-<div class='question-container'>
+<div class='question-container' id="main-container">
   <% @questions.each do |question| %>
 
     <article id="<%= question.id %>">
       <form method="post" action='/questions/<%= question.id %>/vote' class="inline">
 
-        <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
+        <button type="submit" name="submit_param" value="upvote" class="fa fa-sort-desc vote-button upvote-button"></button>
 
         <button type="submit" name="submit_param" value="downvote" class="fa fa-sort-asc vote-button downvote-button"></button>
+
       </form>
       <h2><a href='/questions/<%= question.id %>'><%= question.title %></a></h2>
       <p>
-
         <span class='timestamp'><%= question.time_since_creation%></span>
         <span class='points'><%= question.points %></span>
         <span class='username'><%= question.user.name %></span>
         <span class='comment-count'><%= question.comments.length %></span>
-          <form method="post" action="/questions/<%= question.id %>" class="inline">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="delete" class="no-border no-outline no-bg c-white hover-underline">
-    </form>
+        <form method="post" action="/questions/<%= question.id %>" class="inline">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="delete" class="fa fa-trash-o vote-button upvote-button">
+        </form>
       </p>
     </article>
 
