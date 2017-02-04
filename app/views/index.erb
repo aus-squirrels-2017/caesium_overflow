@@ -1,11 +1,11 @@
 
-<div class='question-container'>
+<div class='question-container' id="main-container">
   <% @questions.each do |question| %>
 
     <article id="<%= question.id %>">
       <form method="post" action='/questions/<%= question.id %>/vote' class="inline">
 
-        <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
+        <button type="submit" name="submit_param" value="upvote" class="fa fa-sort-desc vote-button upvote-button"></button>
 
         <button type="submit" name="submit_param" value="downvote" class="fa fa-sort-asc vote-button downvote-button"></button>
 

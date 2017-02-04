@@ -18,13 +18,13 @@ end
 post '/questions/:id/vote' do
   question = Question.find(params[:id])
   vote = Vote.new
-  if params[:submit_param] == 'downvote'
+  if params[:submit_param] == 'downvote' || params.has_key?("downvote")
     vote.downvote = true
   end
   question.votes << vote
   question.save
   if request.xhr?
-    question.points
+    question.points.to_s
   else
     redirect "/questions"
   end
