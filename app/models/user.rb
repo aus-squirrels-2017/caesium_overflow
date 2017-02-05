@@ -5,11 +5,8 @@ class User < ActiveRecord::Base
   has_many :votes, as: :votable
   include BCrypt
 
-  def self.authenticate_user(email, password)
-    user = User.find_by(email: email)
-    return false if user == nil
-    return true if user.password == password
-    false
+  def authenticate(email, password)
+    self.password == password && self.email == email
   end
 
   def password
