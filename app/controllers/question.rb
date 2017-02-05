@@ -47,5 +47,5 @@ get '/questions/:id/edit' do
     erb :'questions/edit', layout: false, locals: {question: @question}
   else
     erb :'questions/edit', locals: {question: @question}
-end
+  end
 end

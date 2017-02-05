@@ -7,7 +7,9 @@
 <% if session[:user_id] == @question.user_id %>
   <ul class="no-bullets no-padding mar-t-2">
     <li class="pipe-separate left">
-      <a id="question-edit" href="/questions/<%= @question.id %>/edit" class="c-white">edit</a>
+    <form method="get" id="question-edit" action="/questions/<%= @question.id %>/edit">
+     <input type="submit" value="edit">
+     </form>
     </li>
 
   <li class="pipe-separate left">
@@ -33,4 +35,6 @@
   <% end %>
   </ul>
 </div>
+<% if current_user%>
 <%= erb :'questions/_create_comment' %>
+<%end%>
