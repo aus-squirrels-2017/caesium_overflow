@@ -19,9 +19,10 @@ get '/login' do
 end
 
 post '/login' do
-  if User.authenticate_user(params[:password], params[:email])
-    session[:user_id] = User.find_by(email: params[:email]).id
-    redirect to('/')
+  @user = User.find_by(email: params[:email])
+  if @user && @user.authenticate(params[:email], params[:password])
+    session[:user_id] = @user.id
+    redirect '/'
   else
     redirect to('/authentication_problem')
   end

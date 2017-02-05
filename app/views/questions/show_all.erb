@@ -16,8 +16,10 @@
         <span class='username'><%= question.user.name %></span>
         <span class='comment-count'><%= question.comments.length %></span>
           <form method="post" action="/questions/<%= question.id %>" class="inline">
+      <% if session[:user_id] == question.user_id %>
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="delete" class="no-border no-outline no-bg c-white hover-underline">
+      <% end %>
     </form>
       </p>
     </article>

@@ -4,12 +4,12 @@
   <span class="entry-date block font-3-4 c-lt-gray"><%= "Written on #{long_form_date(@question.created_at)}, by #{@name}." %></span>
 
   <p><%= @question.body %></p>
-
+<% if session[:user_id] == @question.user_id %>
   <ul class="no-bullets no-padding mar-t-2">
     <li class="pipe-separate left">
       <a id="question-edit" href="/questions/<%= @question.id %>/edit" class="c-white">edit</a>
     </li>
-</div>
+
   <li class="pipe-separate left">
     <form method="post" action="/questions/<%= @question.id %>" class="inline">
       <input type="hidden" name="_method" value="delete">
@@ -17,7 +17,8 @@
     </form>
   </li>
 </ul>
-
+<% end %>
+</div>
 <h2>Comments</h2>
 <div class="comments">
   <ul>

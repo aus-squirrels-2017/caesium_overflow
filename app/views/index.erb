@@ -17,8 +17,10 @@
         <span class='username'><%= question.user.name %></span>
         <span class='comment-count'><%= question.comments.length %></span>
         <form method="post" action="/questions/<%= question.id %>" class="inline">
+        <% if session[:user_id] == question.user_id %>
           <input type="hidden" name="_method" value="delete">
           <input type="submit" value="delete" class="fa fa-trash-o vote-button upvote-button">
+        <% end %>
         </form>
       </p>
     </article>
@@ -28,7 +30,7 @@
 <form>
     <button formaction="/questions/all">More Questions</button>
 </form>
-
+<% if session[:user_id] != nil %>
 <form method="post" action="/questions">
   <input type="hidden" name="question[user_id]" value="<%= session[:user_id]%>">
   <label for="title-input" class="block mar-b-1">Title:</label>
@@ -39,5 +41,6 @@
 
   <input type="submit" value="Publish" tabindex="3" class="block button w-100 mar-t-4 mar-b-3 pad-2 round-1 text-c center no-border no-outline">
 </form>
+<% end %>
 </div>
 
