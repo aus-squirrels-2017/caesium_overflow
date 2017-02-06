@@ -7,7 +7,9 @@
 <% if session[:user_id] == @question.user_id %>
   <ul class="no-bullets no-padding mar-t-2">
     <li class="pipe-separate left">
-      <a id="question-edit" href="/questions/<%= @question.id %>/edit" class="c-white">edit</a>
+    <form method="get" id="question-edit" action="/questions/<%= @question.id %>/edit">
+     <input type="submit" value="edit">
+     </form>
     </li>
 
   <li class="pipe-separate left">
@@ -23,14 +25,27 @@
 <div class="comments">
   <ul>
   <% @question.comments.each do |main_comment| %>
+
       <%= erb :'_comment', locals:{ comment: main_comment }%>
-      <ol>
+
+      <button class='comment-comment'>comment</button>
+      <form id=<%= main_comment.id %> class="hidden-form" method="POST" action="/comments/comments/<%= main_comment.id%>" style=>
+      <textarea name="new_post">
+      </textarea>
+      <br>
+      <button type="submit" > Create</button>
+      </form>
+      <ol class=<%=main_comment.id %>>
         <% main_comment.comments.each do |sub_comment| %>
-          <%= erb :'_comment', locals:{ comment: sub_comment }%>
+          <li id="<%= sub_comment.id %>"> <%= sub_comment.body %>
+          <p>Author: <%= sub_comment.user.name %></p>
+          </li>
         <% end %>
       </ol>
-    </li>
   <% end %>
+  </li>
   </ul>
 </div>
+<% if current_user%>
 <%= erb :'questions/_create_comment' %>
+<%end%>
