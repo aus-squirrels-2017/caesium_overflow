@@ -5,18 +5,25 @@ $(document).ready(function() {
     $(this).hide();
     $(this).next().show();
   });
-  $(".comments").on("click", ".hidden-form", function(e){
+  $(".comments").on("submit", ".hidden-form", function(e){
     e.preventDefault();
-    console.log($(this).text());
-    var method = $(this).attr('method');
-    var action = $(this).attr('action');
-    var answer = $(this).parent().children(":first");
-    var formData = $(this).serializeArray();
-    // $.ajax({
-      // url: action
-      // type: method
-      // data:
-    // })
-
+    var here = this
+    var formData = $(this).serialize();
+    // var method   = $(this).attr('method');
+    // var action   = $(this).attr('action');
+    var answer   = $(this).parent().children(":first");
+    // console.log(this.action)
+    $.ajax({
+      url: this.action,
+      type: this.method,
+      data: formData
+    })
+    .done(function(response){
+      // $(here).parent().children(':last').append(response);
+      console.log(response);
+      console.log($(here).parent().children());
+      // $(here).parent().children(':last').append(response);
+    })
+    // still working on this.
   })
 });
