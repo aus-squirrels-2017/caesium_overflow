@@ -11,10 +11,10 @@ end
 
 def create_vote
   user_id = User.pluck(:id).sample
-  votable_classes = ['question', 'comment'].sample
+  votable_classes = ['Question', 'Comment'].sample
   votable_id = nil
 
-  if votable_classes == 'question'
+  if votable_classes == 'Question'
     votable_id = Question.pluck(:id).sample
   else
     votable_id = Comment.pluck(:id).sample
@@ -22,7 +22,6 @@ def create_vote
   vote = Vote.create!(:user_id      => user_id, 
                   :votable_type => votable_classes,
                   :votable_id   => votable_id)
-
 end
 
 
@@ -43,13 +42,10 @@ end
   question = user.questions.create!(:title   => Faker::Book.title,
                                     :body    => Faker::Lorem.paragraph)
   3.times do 
+    question.votes.create!
     question.comments << create_comment
   end
-
-  create_vote
-
-  question.comments.sample.comments << create_comment
-
+  question.comments.sample.comments << create_comment  
 
 end
 
