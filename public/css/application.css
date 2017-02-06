@@ -134,3 +134,6 @@ form#posts input[type='submit'] {
   padding: 0px 0px 1px 0px;
 }
 
+.hidden-form {
+  display: none
+}
