@@ -25,21 +25,25 @@
 <div class="comments">
   <ul>
   <% @question.comments.each do |main_comment| %>
+
       <%= erb :'_comment', locals:{ comment: main_comment }%>
+
       <button class='comment-comment'>comment</button>
-      <form class="hidden-form" method="POST" action="/comments/comments/<%= @question.id%>" style=>
+      <form id=<%= main_comment.id %> class="hidden-form" method="POST" action="/comments/comments/<%= main_comment.id%>" style=>
       <textarea name="new_post">
       </textarea>
       <br>
       <button type="submit" > Create</button>
       </form>
-      <ol>
+      <ol class=<%=main_comment.id %>>
         <% main_comment.comments.each do |sub_comment| %>
-          <%= erb :'_comment', locals:{ comment: sub_comment }%>
+          <li id="<%= sub_comment.id %>"> <%= sub_comment.body %>
+          <p>Author: <%= sub_comment.user.name %></p>
+          </li>
         <% end %>
       </ol>
-    </li>
   <% end %>
+  </li>
   </ul>
 </div>
 <% if current_user%>
